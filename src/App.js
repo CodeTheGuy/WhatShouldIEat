@@ -1,63 +1,83 @@
-import React,{useEffect, useState} from 'react';
-import Recipe from "./Recipe";
+import React , {useState} from 'react';
+import logo from './logo.svg';
 import './App.css';
+import GoogleLogin from 'react-google-login';
 
-const App = () => {
+function App() {
+  
+  /*const hStyle = { color: 'red'};
+  const hStyle2 = { color: 'blue'};
+  var hStyle3 = { color: 'green'};*/
 
-  //These are taken from the edamam API
-  const APP_ID = "d6555000";
-  const APP_KEY = "7cb56f715642c34bb6ba13ef7fbb23a1";
+  const [name,setName] = useState("");
 
-  //Contructors, recipes 
-  const [recipes, setRecipes] = useState([]);
-  const [search, setSearch] = useState("");
-  const [query, setQuery] = useState('Chicken')
-  useEffect(() =>{
-    getRecipes();
-  }, [query]);
+  const[email,setEmail] = useState("");
 
-  //Gets recipe information
-  const getRecipes = async () => {
-      const response = await fetch(`https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`);
-      const data = await response.json();
-      setRecipes(data.hits);
-  }
+  const [url,setUrl] = useState("");
 
-  //A gate that allows the target search to go through after search has been clicked
-  const updateSearch = e => {
-    setSearch(e.target.value);
-    console.log(search);
-  }
+  const responseGoogle = response => {
+      setName(response.profileObj.name);
+      setEmail(response.profileObj.email);
+      setUrl(response.profileObj.imageUrl);
+  };
 
-  //Search bar UI, allows the search bar to be clicked to input information
-  const getSearch = e => {
-    e.preventDefault();
-    setQuery(search);
-    setSearch('');
-  }
-
-  //Creates all the front end information by fetching info from the recipe API
-  return(
-    <div className="App">
-      <form onSubmit={getSearch} className="search-form">
-        <input className="search-bar" type="text" value={search} onChange={updateSearch} />
-        <button className="search-button" type="submit">
-          Search
-        </button>
-      </form>
-      <div className="recipes">
-      {recipes.map(recipe =>(
-        <Recipe
-        key={recipe.recipe.label}
-        title={recipe.recipe.label} 
-        calories={recipe.recipe.calories} 
-        image={recipe.recipe.image}
-        ingredients={recipe.recipe.ingredients}
-        />
-      ))}
+  return (
+      <div className = "App">
+          <h1>Login with Google</h1>
+          <h2>Welcome: {name}</h2>
+          <h2>Email: {email}</h2>
+          <image src = {url} alt = {name}/>
+          <GoogleLogin
+          clientId="421424544018-v6q46o2c5s4kbk4cuenj6fmnea2bsnpk.apps.googleusercontent.com"
+          buttonText="Login"
+          onSuccess={responseGoogle}
+          onFailure={responseGoogle}
+          cookiePolicy={'single_host_origin'}
+          />
+          
       </div>
-    </div>
   )
+  /*
+  return (
+    <div className="App">
+      <h1 style = { hStyle3 }>Hello World</h1>
+      <p>Hello World</p>
+      <button type="button" onclick="hStyle3 = {color:orange};">Click Here</button>
+      <img src={logo} className="App-logo" alt="logo" />
+      <header className="App-header">
+      Hello World<img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Caption <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://www.w3schools.com/js/exercise_js.asp?filename=exercise_js_functions1"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LINK
+        </a>
+        <p>
+          Caption <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LINK
+        </a>
+        <h1 style = { hStyle2 }>Hello World</h1>
+        <li>a</li>
+        <li>a</li>
+        <li>a</li>
+        <li>a</li>
+      </header>
+      <h1 style = { hStyle }>Hello World</h1>
+      <img src={logo} className="App-logo" alt="logo" />
+    </div>
+  );*/
 }
 
 export default App;
