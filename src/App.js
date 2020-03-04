@@ -2,6 +2,15 @@ import React,{useEffect, useState} from 'react';
 import Recipe from "./Recipe";
 import './App.css';
 import GoogleLogin from 'react-google-login';
+import { BrowserRouter as Router, Route, } from 'react-router-dom';
+import Navbar from './components/NavBar';
+import Landing from './components/Landing';
+import SignIn from './components/SignIn';
+import SignOut from './components/SignOut';
+import Home from './components/Home';
+import Account from './components/Account';
+import Admin from './components/Admin';
+import * as ROUTES from './constants/routes';
 
 const App = () => {
 
@@ -51,6 +60,19 @@ const App = () => {
   //Creates all the front end information by fetching info from the recipe API
   return(
     <div className = "App">
+    <Router>
+      <div>
+        <Navbar />
+        
+        <hr />
+        <Route exact path={ROUTES.LANDING} component={Landing} />
+        <Route path={ROUTES.SIGN_OUT} component={SignOut} />
+        <Route path={ROUTES.SIGN_IN} component={SignIn} />
+        <Route path={ROUTES.HOME} component={Home} />
+        <Route path={ROUTES.ACCOUNT} component={Account} />
+        <Route path={ROUTES.ADMIN} component={Admin} />
+      </div>
+    </Router>
     <h1>Login with Google</h1>
     <h2>Welcome: {name}</h2>
     <h2>Email: {email}</h2>
