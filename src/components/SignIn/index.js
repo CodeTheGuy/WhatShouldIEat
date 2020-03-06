@@ -17,7 +17,7 @@ const SignIn = () => {
   return (
     <div>
       <center>
-        ,<h1>Sign in with a Google Account</h1>
+        <h1>Sign in with a Google Account</h1>
         <h3>Welcome {name}</h3>
         <h5>Email: {email}</h5>
         <image src={url} alt={name} />

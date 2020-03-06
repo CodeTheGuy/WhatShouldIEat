@@ -76,9 +76,32 @@
 }
 .begin {
   background: #42e3f5;
-  border: none;
+  border-color: cadetblue;
+  border-width: 5px;
+  border-radius: 20px;
   padding: 15px 50px;
   margin-top: 40px;
-  align-self: 'center';
-  color: white;
+  align-self: "center";
+  color: black;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: x-large;
+}
+
+.image3 {
+  height: 375px;
+  opacity: 0.8;
+  width: 70%;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  border-width: 10px;
+  border-radius: 100px;
+}
+
+.image4 {
+  margin-top: 25px;
+  opacity: 0.8;
+  width: 80%;
+  height: 350px;
+  border-top-left-radius: 200px;
+  border-top-right-radius: 200px;
 }
