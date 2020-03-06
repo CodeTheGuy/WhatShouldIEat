@@ -4,6 +4,7 @@ import "./App.css";
 import GoogleLogin from "react-google-login";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navbar from "./components/NavBar";
+import StartQuiz from "./components/StartQuiz";
 import Quiz from "./components/Quiz";
 import SignIn from "./components/SignIn";
 import Home from "./components/Home";
@@ -20,7 +21,8 @@ const App = () => {
           <Navbar />
 
           <hr />
-          <Route exact path={ROUTES.QUIZ} component={Quiz} />
+          <Route exact path={ROUTES.STARTQUIZ} component={StartQuiz} />
+          <Route path={ROUTES.QUIZ} component={Quiz} />
           <Route path={ROUTES.HOME} component={Home} />
           <Route path={ROUTES.SIGN_IN} component={SignIn} />
           <Route path={ROUTES.SEARCH} component={Search} />

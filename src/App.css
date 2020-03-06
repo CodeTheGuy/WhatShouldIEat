@@ -71,3 +71,14 @@
   margin-bottom: 75px;
   border-radius: 40px;
 }
+.Quiz {
+  margin-bottom: 75px;
+}
+.begin {
+  background: #42e3f5;
+  border: none;
+  padding: 15px 50px;
+  margin-top: 40px;
+  align-self: 'center';
+  color: white;
+}
