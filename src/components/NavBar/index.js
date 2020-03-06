@@ -11,7 +11,7 @@ const Navbar = () => (
         <Link to={ROUTES.SEARCH}>Search</Link>
       </li>
       <li>
-        <Link to={ROUTES.QUIZ}>Quiz</Link>
+        <Link to={ROUTES.STARTQUIZ}>Quiz</Link>
       </li>
       <li>
         <Link to={ROUTES.SIGN_IN}>Sign In</Link>
