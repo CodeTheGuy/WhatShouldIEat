@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Recipe from "./Recipe";
 import "./App.css";
 import GoogleLogin from "react-google-login";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import Navbar from "./components/NavBar";
 import StartQuiz from "./components/StartQuiz";
 import Quiz from "./components/Quiz";
@@ -18,10 +18,10 @@ const App = () => {
     <div className="App">
       <Router>
         <div>
+          <Redirect exact from="/" to="/home" />
           <Navbar />
-
           <hr />
-          <Route exact path={ROUTES.STARTQUIZ} component={StartQuiz} />
+          <Route path={ROUTES.STARTQUIZ} component={StartQuiz} />
           <Route path={ROUTES.QUIZ} component={Quiz} />
           <Route path={ROUTES.HOME} component={Home} />
           <Route path={ROUTES.SIGN_IN} component={SignIn} />
