@@ -22,7 +22,7 @@ const SignIn = () => {
         <h5>Email: {email}</h5>
         <image src={url} alt={name} />
         <GoogleLogin
-          clientId="421424544018-v6q46o2c5s4kbk4cuenj6fmnea2bsnpk.apps.googleusercontent.com"
+          clientId="421424544018-uurc4oqq1ai0e4lejn0b3eeg6e35l9hp.apps.googleusercontent.com"
           buttonText="Login"
           onSuccess={responseGoogle}
           onFailure={responseGoogle}
