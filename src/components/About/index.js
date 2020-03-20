@@ -48,7 +48,7 @@ const About = () => (
         <center>Ryan McNally</center>
       </h3>
       <h3>
-        <center>Ryan Hickhok</center>
+        <center>Ryan Hickok</center>
       </h3>
       <h3>
         <center>Cody Stricker</center>
