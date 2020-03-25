@@ -27,6 +27,25 @@
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  font-size: large;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.recipe-info{
+  font-size: large;
+  margin-bottom: 20px;
+}
+
+.recipe-button {
+  font-size: medium;
+  background: #71deff;
+  border-color: #2bceff;
+  border-width: 5px;
+  border-radius: 20px;
+  padding: 15px 50px;
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
 
 #nav {

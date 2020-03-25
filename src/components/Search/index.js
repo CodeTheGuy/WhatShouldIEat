@@ -65,6 +65,8 @@ const Search = () => {
               calories={recipe.recipe.calories}
               image={recipe.recipe.image}
               ingredients={recipe.recipe.ingredients}
+              servings={recipe.recipe.yield}
+              url={recipe.recipe.url}
             />
           ))}
         </div>
