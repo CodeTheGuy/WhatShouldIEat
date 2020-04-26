@@ -11,91 +11,169 @@ class Quiz extends Component {
   }
   onCompleteComponent = () => {
     this.setState({
-      isComplted: true,
+      isCompleted: true,
     });
   };
   render() {
     var json = {
-      completedHtml:
-        "<h3>Thank you for your feedback.</h3> <h5>Your thoughts and ideas will help us to create a great product!</h5>",
-      completedHtmlOnCondition: [
-        {
-          expression: "{nps_score} > 8",
-          html:
-            "<h3>Thank you for your feedback.</h3> <h5>We glad that you love our product. Your ideas and suggestions will help us to make our product even better!</h5>",
-        },
-        {
-          expression: "{nps_score} < 7",
-          html:
-            "<h3>Thank you for your feedback.</h3> <h5> We are glad that you share with us your ideas.We highly value all suggestions from our customers. We do our best to improve the product and reach your expectation.</h5>\n",
-        },
-      ],
-      pages: [
-        {
-          name: "page1",
-          elements: [
+          questions: [
             {
-              type: "rating",
-              name: "nps_score",
-              title:
-                "On a scale of zero to ten, how likely are you to recommend our product to a friend or colleague?",
-              isRequired: true,
-              rateMin: 0,
-              rateMax: 10,
-              minRateDescription: "(Most unlikely)",
-              maxRateDescription: "(Most likely)",
-            },
-            {
-              type: "checkbox",
-              name: "promoter_features",
-              visibleIf: "{nps_score} >= 9",
-              title: "What features do you value the most?",
-              isRequired: true,
-              validators: [
-                {
-                  type: "answercount",
-                  text: "Please select two features maximum.",
-                  maxCount: 2,
-                },
-              ],
-              hasOther: true,
+              type: "radiogroup",
+              name: "Category",
+              title: "What kind of food are you in the mood for?",
               choices: [
-                "Performance",
-                "Stability",
-                "User Interface",
-                "Complete Functionality",
+                "Main", "Snack", "Dessert", "Drink"
               ],
-              otherText: "Other feature:",
-              colCount: 2,
-            },
+        }, 
+        
+        
+        
+        //This is the second step in the survey
+        {
+              "type": "radiogroup",
+              "name": "MainMood",
+              "title": "Please check the foods you feel would taste the best right now",
+              "visibleIf": "{Category} contains Main",
+              choices: [
+                "Meats", "Salad", "Grains"
+              ],
+            } , {
+              "type": "radiogroup",
+              "name": "SnackMood",
+              "title": "Please check the foods you feel would taste the best right now",
+              "visibleIf": "{Category} contains Snack",
+              choices: [
+                "Salty", "Sweet"
+              ],
+            }, {
+              "type": "radiogroup",
+              "name": "DessertMood",
+              "title": "Please check the foods you feel would taste the best right now",
+              "visibleIf": "{Category} contains Dessert",
+              choices: [
+                "Chocolate", "Fruit", "Baked"
+              ],
+            }, {
+              "type": "radiogroup",
+              "name": "DrinkMood",
+              "title": "Please check the drinks you feel would taste the best right now",
+              "visibleIf": "{Category} contains Drink",
+              choices: [
+                "Plain", "Smoothie"
+              ],
+            }, 
+            
+
+
+            //This is the third step in the survey
             {
-              type: "comment",
-              name: "passive_experience",
-              visibleIf: "{nps_score} > 6  and {nps_score} < 9",
-              title: "What is the primary reason for your score?",
-            },
+              "type": "checkbox",
+              "name": "MeatMeals",
+              "title": "Please check the chocolate desserts you feel would taste the best right now",
+              "visibleIf": "{MainMood} contains Meats",
+              choices: [
+                "Light Meats", "Dark Meats", "Fish"
+              ],
+            } ,             {
+              "type": "checkbox",
+              "name": "SaladMeals",
+              "title": "Please check the fruit desserts you feel would taste the best right now",
+              "visibleIf": "{MainMood} contains Salad",
+              choices: [
+                "Fruit Salad", "Vegetable Salad"
+              ],
+            } ,            {
+              "type": "checkbox",
+              "name": "GrainMeals",
+              "title": "Please check the baked desserts you feel would taste the best right now",
+              "visibleIf": "{MainMood} contains Grains",
+              choices: [
+                "Bread", "Pizza", "Cereal"
+              ],
+            } ,
+
+
+
             {
-              type: "comment",
-              name: "disappointed_experience",
-              visibleIf: "{nps_score} notempty",
-              title:
-                "What do you miss and what was disappointing in your experience with us?",
-            },
-          ],
-        },
+              "type": "checkbox",
+              "name": "SaltySnacks",
+              "title": "Please check the drinks you feel would taste the best right now",
+              "visibleIf": "{SnackMood} contains Salty",
+              choices: [
+                "Crackers", "Chips"
+              ],
+            } ,             {
+              "type": "checkbox",
+              "name": "SweetSnacks",
+              "title": "Please check the drinks you feel would taste the best right now",
+              "visibleIf": "{SnackMood} contains Sweet",
+              choices: [
+                "Candy", "Baked Goods"
+              ],
+            } ,
+
+
+
+
+            {
+              "type": "checkbox",
+              "name": "ChocolateDesserts",
+              "title": "Please check the chocolate desserts you feel would taste the best right now",
+              "visibleIf": "{DessertMood} contains Chocolate",
+              choices: [
+                "Brownies", "Pudding", "Chocolate Bar"
+              ],
+            } ,             {
+              "type": "checkbox",
+              "name": "FruitDesserts",
+              "title": "Please check the fruit desserts you feel would taste the best right now",
+              "visibleIf": "{DessertMood} contains Fruit",
+              choices: [
+                "Fruit Salad", "Fruit Dip", "Fruit pizza"
+              ],
+            } ,            {
+              "type": "checkbox",
+              "name": "BakedDesserts",
+              "title": "Please check the baked desserts you feel would taste the best right now",
+              "visibleIf": "{DessertMood} contains Baked",
+              choices: [
+                "Brownies", "Cake", "Bars"
+              ],
+            } ,             
+            
+            
+            
+            {
+              "type": "checkbox",
+              "name": "PlainDrinks",
+              "title": "Please check the drinks you feel would taste the best right now",
+              "visibleIf": "{DrinkMood} contains Plain",
+              choices: [
+                "Water", "Milk", "Juice"
+              ],
+            } ,             {
+              "type": "checkbox",
+              "name": "SmoothieDrinks",
+              "title": "Please check the drinks you feel would taste the best right now",
+              "visibleIf": "{DrinkMood} contains Smoothie",
+              choices: [
+                "Fruit", "Dessert", "Workout"
+              ],
+            } ,
       ],
-      showQuestionNumbers: "off",
+      completedHtml: "Thank you!"
     };
-    var surveyRender = !this.state.isComplted ? (
+
+    var surveyRender = !this.state.isCompleted ? (
       <Survey.Survey
         json={json}
         showCompletedPage={false}
-        onComplte={this.onCompleteComponent}
+        onComplete={this.onCompleteComponent}
       />
     ) : null;
 
-    var onSurveyCompletion = this.state.isComplted ? (
-      <div>Thanks for completeing the survey</div>
+    var onSurveyCompletion = this.state.isCompleted ? (
+    <div>Thanks for completing the survey.</div>
     ) : null;
 
     return (
@@ -105,8 +183,7 @@ class Quiz extends Component {
           {onSurveyCompletion}
         </div>
       </div>
-    );
-  }
+    )
 }
-
+}
 export default Quiz;
