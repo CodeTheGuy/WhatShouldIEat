@@ -23,6 +23,7 @@ class Quiz extends Component {
               type: "radiogroup",
               name: "Category",
               title: "What kind of food are you in the mood for?",
+              isRequired: true,
               choices: [
                 "Main", "Snack", "Dessert", "Drink"
               ],
@@ -36,6 +37,7 @@ class Quiz extends Component {
               "name": "MainMood",
               "title": "Please check the foods you feel would taste the best right now",
               "visibleIf": "{Category} contains Main",
+              isRequired: true,
               choices: [
                 "Meats", "Salad", "Grains"
               ],
@@ -44,6 +46,7 @@ class Quiz extends Component {
               "name": "SnackMood",
               "title": "Please check the foods you feel would taste the best right now",
               "visibleIf": "{Category} contains Snack",
+              isRequired: true,
               choices: [
                 "Salty", "Sweet"
               ],
@@ -52,6 +55,7 @@ class Quiz extends Component {
               "name": "DessertMood",
               "title": "Please check the foods you feel would taste the best right now",
               "visibleIf": "{Category} contains Dessert",
+              isRequired: true,
               choices: [
                 "Chocolate", "Fruit", "Baked"
               ],
@@ -60,6 +64,7 @@ class Quiz extends Component {
               "name": "DrinkMood",
               "title": "Please check the drinks you feel would taste the best right now",
               "visibleIf": "{Category} contains Drink",
+              isRequired: true,
               choices: [
                 "Plain", "Smoothie"
               ],
@@ -73,6 +78,7 @@ class Quiz extends Component {
               "name": "MeatMeals",
               "title": "Please check the chocolate desserts you feel would taste the best right now",
               "visibleIf": "{MainMood} contains Meats",
+              isRequired: true,
               choices: [
                 "Light Meats", "Dark Meats", "Fish"
               ],
@@ -81,6 +87,7 @@ class Quiz extends Component {
               "name": "SaladMeals",
               "title": "Please check the fruit desserts you feel would taste the best right now",
               "visibleIf": "{MainMood} contains Salad",
+              isRequired: true,
               choices: [
                 "Fruit Salad", "Vegetable Salad"
               ],
@@ -89,6 +96,7 @@ class Quiz extends Component {
               "name": "GrainMeals",
               "title": "Please check the baked desserts you feel would taste the best right now",
               "visibleIf": "{MainMood} contains Grains",
+              isRequired: true,
               choices: [
                 "Bread", "Pizza", "Cereal"
               ],
@@ -101,6 +109,7 @@ class Quiz extends Component {
               "name": "SaltySnacks",
               "title": "Please check the drinks you feel would taste the best right now",
               "visibleIf": "{SnackMood} contains Salty",
+              isRequired: true,
               choices: [
                 "Crackers", "Chips"
               ],
@@ -109,6 +118,7 @@ class Quiz extends Component {
               "name": "SweetSnacks",
               "title": "Please check the drinks you feel would taste the best right now",
               "visibleIf": "{SnackMood} contains Sweet",
+              isRequired: true,
               choices: [
                 "Candy", "Baked Goods"
               ],
@@ -122,6 +132,7 @@ class Quiz extends Component {
               "name": "ChocolateDesserts",
               "title": "Please check the chocolate desserts you feel would taste the best right now",
               "visibleIf": "{DessertMood} contains Chocolate",
+              isRequired: true,
               choices: [
                 "Brownies", "Pudding", "Chocolate Bar"
               ],
@@ -130,6 +141,7 @@ class Quiz extends Component {
               "name": "FruitDesserts",
               "title": "Please check the fruit desserts you feel would taste the best right now",
               "visibleIf": "{DessertMood} contains Fruit",
+              isRequired: true,
               choices: [
                 "Fruit Salad", "Fruit Dip", "Fruit pizza"
               ],
@@ -138,6 +150,7 @@ class Quiz extends Component {
               "name": "BakedDesserts",
               "title": "Please check the baked desserts you feel would taste the best right now",
               "visibleIf": "{DessertMood} contains Baked",
+              isRequired: true,
               choices: [
                 "Brownies", "Cake", "Bars"
               ],
@@ -150,6 +163,7 @@ class Quiz extends Component {
               "name": "PlainDrinks",
               "title": "Please check the drinks you feel would taste the best right now",
               "visibleIf": "{DrinkMood} contains Plain",
+              isRequired: true,
               choices: [
                 "Water", "Milk", "Juice"
               ],
@@ -158,6 +172,7 @@ class Quiz extends Component {
               "name": "SmoothieDrinks",
               "title": "Please check the drinks you feel would taste the best right now",
               "visibleIf": "{DrinkMood} contains Smoothie",
+              isRequired: true,
               choices: [
                 "Fruit", "Dessert", "Workout"
               ],
@@ -174,6 +189,13 @@ class Quiz extends Component {
       />
     ) : null;
 
+    var surveyValueChanged = function (sender, options) {
+      var el = document.getElementById(options.name);
+      if (el) {
+          el.value = options.value;
+      }
+    };
+
     var onSurveyCompletion = this.state.isCompleted ? (
     <div>
       <h1>
@@ -181,12 +203,12 @@ class Quiz extends Component {
           It looks like you're in the mood for foods related to these categories.
         </center>
       </h1>
-
-      {json.stringify}
-
+      
+      <h2>
       <center>
       See what you have around the house, or search for recipes using our search feature!
-        </center>
+      </center>
+      </h2>
     </div>
     ) : null;
 
