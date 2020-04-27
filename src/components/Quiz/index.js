@@ -14,8 +14,10 @@ class Quiz extends Component {
       isCompleted: true,
     });
   };
+
   render() {
     var json = {
+      clearInvisibleValues: "onHidden",
           questions: [
             {
               type: "radiogroup",
@@ -173,7 +175,19 @@ class Quiz extends Component {
     ) : null;
 
     var onSurveyCompletion = this.state.isCompleted ? (
-    <div>Thanks for completing the survey.</div>
+    <div>
+      <h1>
+        <center>
+          It looks like you're in the mood for foods related to these categories.
+        </center>
+      </h1>
+
+      {json.stringify}
+
+      <center>
+      See what you have around the house, or search for recipes using our search feature!
+        </center>
+    </div>
     ) : null;
 
     return (
