@@ -45,7 +45,7 @@ const Account = () => {
         <image src={url} alt={name} />
         <h7>  </h7>
         <GoogleLogout
-        clientId="421424544018-v6q46o2c5s4kbk4cuenj6fmnea2bsnpk.apps.googleusercontent.com"
+        clientId="421424544018-c2tdcn4rlfo3hvvncuvb3t24puj4eo44.apps.googleusercontent.com"
         buttonText="Log Out"
         onLogoutSuccess={logout}
         isSignedIn = {false}
@@ -60,7 +60,7 @@ const Account = () => {
       <center>
         <h1>Please Sign In with a Google Account</h1>
         <GoogleLogin
-          clientId="421424544018-v6q46o2c5s4kbk4cuenj6fmnea2bsnpk.apps.googleusercontent.com"
+          clientId="421424544018-c2tdcn4rlfo3hvvncuvb3t24puj4eo44.apps.googleusercontent.com"
           buttonText="Log In"
           onSuccess={responseGoogle}
           onFailure={responseGoogle}
