@@ -14,9 +14,6 @@ const Navbar = () => (
         <Link to={ROUTES.STARTQUIZ}>Quiz</Link>
       </li>
       <li>
-        <Link to={ROUTES.SIGN_IN}>Sign In</Link>
-      </li>
-      <li>
         <Link to={ROUTES.ACCOUNT}>Account</Link>
       </li>
       <li>
